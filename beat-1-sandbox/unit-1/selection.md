@@ -148,7 +148,6 @@ Quote source text directly in each field below. Paraphrase does not satisfy them
 
 **Run history**
 
-Direct rubric review, one full pass: **20/20**. The score matches the agreement line
 Claude Code eval run (claude-3-7-sonnet), one full pass: **20/20**. The score matches the agreement line
 in `eval-run.txt`.
 

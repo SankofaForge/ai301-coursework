@@ -92,4 +92,4 @@ From the accepted reproduction on issue #69 (commit `3318b1d`):
 
 ## Deviations
 
-Nothing changed from the plan: the fix was implemented directly in `_parse_json_output` to handle `list` inputs, and the xfail marker was removed from `test_json_array_fallback` in `tests/unit/test_output_parser.py` as planned.
+- In `rag/generator/output_parser.py`, `logger.info("json_output_parsed", section_count=len(sections))` was added to the new list branch to maintain structured logging parity with the dictionary parsing branch. Aside from this parity log, the fix and test un-xfail match the plan exactly.

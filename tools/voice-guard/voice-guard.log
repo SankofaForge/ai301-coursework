@@ -1,0 +1,13 @@
+--- [2026-10-21T17:31:18.283202+00:00] FAIL ---
+Text Preview: Hi maintainers, great project! I would love to contribute to this amazing repo. Please assign this to me, I guarantee it will be 100% fixed in 2 days....
+Violations:
+  - [NO_ASSIGNMENT_DEMAND] Never demand assignment or ticket reservation ('assign this to me', 'please assign me')
+  - [NO_SPECULATIVE_TIMELINES] Never promise fixed delivery dates or speculative timelines ('by tomorrow', 'in 48 hours', 'ETA')
+  - [NO_OVERCONFIDENT_GUARANTEES] Never make overconfident outcome guarantees ('100% fixed', 'easy fix', 'quick fix')
+  - [AVOID_GENERIC_BOILERPLATE] Avoid boilerplate compliments without technical engagement ('great project! I would love to work on this')
+  - [MISSING_TECHNICAL_ANCHOR] Must reference specific technical components, issue numbers (#...), files, or deliverables
+
+--- [2026-10-21T17:31:28.688496+00:00] PASS ---
+Text Preview: Hi! I would like to investigate issue #22 to implement the local CI check runner in `scripts/check_all.py` and document fork-sync guidelines in `CONTRIBUTING.md...
+Result: Passed all voice-guard rules.
+

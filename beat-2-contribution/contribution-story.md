@@ -1,4 +1,4 @@
-# Contribution: [Issue Title]
+# Contribution: One command to run every CI check locally, plus fork-sync guidance for contributors
 
 Path: `beat-2-contribution/contribution-story.md`
 
@@ -7,10 +7,10 @@ the repository is not read. **Keep every section header below under its exact na
 format criteria grade exactly that. Your course repo link is the whole submission: no tool
 files and no evidence uploads are part of Assignment 5.
 
-**Contribution Number:** [1]
+**Contribution Number:** 1
 **Student:** Olayinka Vaughan
 **GitHub Username:** Builder106
-**Issue:** [GitHub issue link]
+**Issue:** https://github.com/tanmayai23/README-Editor-skill/issues/22
 **Pull Request:** [GitHub PR link, once opened]
 
 One repository, built across units 5 to 8, telling the whole story of your real
@@ -58,11 +58,9 @@ one in the week it belongs to.
 
 I upgraded the issue-select skill into issue-scout by authoring a multi-query search strategy and metadata ranking filters mapped to my fit profile. In the initial live scan, the scout surfaced 291 candidate issues and correctly filtered down to 5 survivors, accepting 4 bounded automation tasks and rejecting an open-ended test migration. The ranking filters favored zero-comment issues so heavily that one active repository took four of the top slots, demonstrating the need for an eventual per-repo diversity limit.
 
-**Unit 6: [one line on the tool work]**
+**Unit 6: Authoring repo-memory and standing up the voice-guard**
 
-[2-4 sentences: the voice-guard, the repo-memory file. What broke or
-fell short, and what changed because of it. "Nothing broke" counts when
-it is true - say how you know.]
+I authored the target repository's memory file (`CLAUDE.local.md`) from `CONTRIBUTING.md` and standing CI workflows, and installed the voice-guard to gate outgoing issue comments against my extended voice guide. The initial orientation extraction pulled verbose workflow runs that exceeded my line budget, so I pruned the command transcripts to keep the memory file under 60 lines focused strictly on local verification steps and contributor conventions. The voice-guard passed the drafted claim comment on its first run because my voice guide rules against unverified delivery promises and assignment demands already held in the text.
 
 **Unit 7: [one line on the tool work]**
 
@@ -78,24 +76,21 @@ drafted, what you did with the draft.]
 
 ## Why I Chose This Issue
 
-[1-2 paragraphs in your own words: how you searched, what your scan
-surfaced, what your scout's verdict said, why this issue fits your
-profile, and what you hope to learn. If your scout's verdict on it
-was reject and you chose it anyway, say so here and say why; choosing
-against your own tool silently is what loses points. Close with an
-honest read of the tool itself: where the scout fell short on a real
-wild search and what you changed or would change, or what convinced
-you it held up. **Record the link to your claim comment in this section too.**
-Not claimed yet? Write `claim pending` and today's date where the link goes,
-and add the link the moment your claim lands.]
+I searched across active GitHub repositories using a three-query search strategy focused on beginner-friendly Python and TypeScript newcomer opportunities. The initial scan surfaced 291 candidate issues, which the ranking pipeline narrowed down to 270 unassigned candidates active within the past 90 days before evaluating the top survivors against the five-check rubric. Issue #22 on `tanmayai23/README-Editor-skill` earned an unequivocal accept verdict: the repository is actively maintained, the issue has zero existing assignees or comments, the project has an AI-compatible contribution policy, and the deliverable is strictly bounded. The task requires writing a standard-library `scripts/check_all.py` script that replicates the repository's 10-step CI pipeline locally, alongside updating `CONTRIBUTING.md` and the PR template with fork-synchronization guidance.
+
+This issue matches my interest in developer tooling, continuous integration verification, and Python automation. Because first-time contributors currently face delayed CI execution pending maintainer approval, providing a single cross-platform command that reproduces CI locally solves an immediate contributor friction point. Working on this issue will help me build deeper proficiency with cross-platform standard library automation across Windows, macOS, and Linux, and practice drafting clear contributor documentation. In evaluating the issue-scout during this wild scan, I noticed that its zero-comment ranking heuristic clustered four issues from this single repository into the top five slots; while each issue passed rubric checks individually, adding a per-repository diversity cap will prevent single-repo dominance in future scans.
+
+**Claim Status:** `claim pending (2026-10-21)`
+
+Guarded claim draft verified by `voice_guard.py`:
+> "Hi! I would like to investigate issue #22 to implement the local CI check runner in `scripts/check_all.py` and document fork-sync guidelines in `CONTRIBUTING.md`. I will prototype the standard-library runner against local environments and verify all checks before submitting a PR."
 
 **Toolkit**
 
-- Tool: issue-scout (your scout: your search strategy, your rubric),
-  and how you used it
-- What it produced: [the scan and its verdict on this issue, described]
-- Difficulties: [where it fell short, or "none met" if none did]
-- What changed: [what you patched or would update, or "nothing"]
+- Tool: issue-scout (search strategy with 3 queries, 5-check rubric), executed via GitHub CLI
+- What it produced: Live wild scan of 291 candidate issues, ranking `tanmayai23/README-Editor-skill#22` as the #1 accepted survivor.
+- Difficulties: Zero-comment ranking bias heavily concentrated top results on a single repository that published several issues simultaneously.
+- What changed: Documented the need for an explicit per-repository diversity cap (maximum 2 issues per repo in the top results) for subsequent scan iterations.
 
 ---
 
@@ -103,26 +98,29 @@ and add the link the moment your claim lands.]
 
 **Problem Description**
 
-[In your own words, what is broken or missing?]
+The `README-Editor-skill` repository runs approximately ten distinct validation checks across its GitHub Actions CI matrix (covering script compilation, 15 ecosystem unit tests, repository analyzers, README scoring, claim verification, SVG banner generation, and manifest parity across Python versions). However, `CONTRIBUTING.md` and the pull request template currently document only three of these commands. New contributors only discover the remaining checks when remote CI fails—and because first-time contributors require manual workflow approval from maintainers, feedback cycles are slow. Furthermore, several recent pull requests were branched from outdated forks rather than synced `main`, causing merge conflicts and near-reversions of recently landed features.
 
 **Expected Behavior**
 
-[What should happen?]
+Contributors should be able to run a single, cross-platform standard-library command (`python scripts/check_all.py`) that mirrors every check executed by `.github/workflows/ci.yml` locally and outputs a clear pass/fail summary. Additionally, `CONTRIBUTING.md` and the PR template should explicitly guide contributors to sync their forks with upstream `main` and branch before writing code.
 
 **Current Behavior**
 
-[What actually happens?]
+Contributors must manually locate and run fragmented commands, several CI checks lack local documentation, and pull requests frequently fail remote CI on first submission or arrive out-of-sync with upstream.
 
 **Affected Components**
 
-[Which parts of the codebase are involved?]
+- `scripts/check_all.py` (new stdlib-only validation runner)
+- `CONTRIBUTING.md` (local check commands and fork-sync documentation)
+- `.github/pull_request_template.md` (updated pre-submission checklist)
+- `.github/workflows/ci.yml` (canonical reference for check steps)
 
 **Toolkit**
 
-- Tool:
-- What it produced:
-- Difficulties:
-- What changed:
+- Tool: repo-memory (`CLAUDE.local.md`) and repository analysis
+- What it produced: Mapped the complete list of 10+ CI workflow steps in `ci.yml` against the 3 checks documented in `CONTRIBUTING.md`.
+- Difficulties: Initial raw extraction exceeded line budgets by including raw bash snippets and matrix definitions.
+- What changed: Condensed the extraction into a high-level component map under 60 lines.
 
 ---
 

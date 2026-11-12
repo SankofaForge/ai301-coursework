@@ -11,14 +11,7 @@ files and no evidence uploads are part of Assignment 5.
 **Student:** Olayinka Vaughan
 **GitHub Username:** Builder106
 **Issue:** https://github.com/tanmayai23/README-Editor-skill/issues/22
-**Pull Request:** [GitHub PR link, once opened]
-
-One repository, built across units 5 to 8, telling the whole story of your real
-contribution. Fill it as you work, not at the end — the sections below ask for evidence that
-is far easier to write down as it happens than to reconstruct in the last weekend.
-
-Contribution Number stays `[1]` unless you make more than one contribution this term; it
-just numbers them.
+**Pull Request:** https://github.com/tanmayai23/README-Editor-skill/pull/24
 
 ---
 
@@ -33,19 +26,6 @@ Toolkit points read, and they are the raw material for your unit-9
 portfolio, so keep them current as you work rather than
 reconstructing them later.
 
-A Toolkit block looks like this (copy it into each story section and
-fill it there):
-
-```text
-**Toolkit**
-
-- Tool: [which tool did this phase's work, and how you used it]
-- What it produced: [described in a sentence or a short excerpt]
-- Difficulties: [what fought you or fell short, or "none met"]
-- What changed: [the patch, revision, or workaround, what you would
-  update, or "nothing"]
-```
-
 This section also keeps one short dated entry per week of tool work,
 starting below: what you built or changed that week, what broke, and
 what you changed because of it. The blocks tell the story where it
@@ -56,7 +36,7 @@ one in the week it belongs to.
 
 **Unit 5: Building and validating the issue-scout across live GitHub searches**
 
-I upgraded the issue-select skill into issue-scout by authoring a multi-query search strategy and metadata ranking filters mapped to my fit profile. In the initial live scan, the scout surfaced 291 candidate issues and correctly filtered down to 5 survivors, accepting 4 bounded automation tasks and rejecting an open-ended test migration. The ranking filters favored zero-comment issues so heavily that one active repository took four of the top slots, demonstrating the need for an eventual per-repo diversity limit.
+I upgraded the issue-select skill into issue-scout by authoring a multi-query search strategy and metadata ranking filters mapped to my fit profile. In the initial live scan, the scout surfaced 291 candidate issues, filtered down to 270 unassigned candidates active within 90 days, and evaluated the top 5 survivors with our rubric, accepting 4 bounded automation tasks and rejecting an open-ended test migration. The ranking filters favored zero-comment issues so heavily that one active repository took four of the top slots, demonstrating the need for an eventual per-repo diversity limit.
 
 **Unit 6: Authoring repo-memory and standing up the voice-guard**
 
@@ -64,7 +44,7 @@ I authored the target repository's memory file (`CLAUDE.local.md`) from `CONTRIB
 
 **Unit 7: Implementing ship-gate verification and writing the gate manifest**
 
-I configured the ship-gate hook and authored `ship-manifest.md` for `README-Editor-skill`, mapping its multi-step CI workflow steps into pre-submission gates. The ship-gate caught that our initial script compilation check omitted `action/report.py`, allowing me to fix the script inclusion before running the test suite. Gating local commits through the manifest ensured that all 112 unit tests, claim verifications, and README scoring checks passed cleanly before staging changes.
+I configured the ship-gate hook and authored `ship-manifest.md` for `README-Editor-skill`, mapping its 16-step CI workflow steps into pre-submission gates. The ship-gate caught that our initial script compilation check omitted `action/report.py`, allowing me to fix the script inclusion before running the test suite. Gating local commits through the manifest ensured that all 112 unit tests, claim verifications, and README scoring checks passed cleanly before staging changes.
 
 **Unit 8: Standing up PR-monitor and executing automated playbook checks**
 
@@ -74,7 +54,7 @@ I deployed the PR-monitor tool with an automated monitoring playbook to track up
 
 ## Why I Chose This Issue
 
-I searched across active GitHub repositories using a three-query search strategy focused on beginner-friendly Python and TypeScript newcomer opportunities. The initial scan surfaced 291 candidate issues, which the ranking pipeline narrowed down to 270 unassigned candidates active within the past 90 days before evaluating the top survivors against the five-check rubric. Issue #22 on `tanmayai23/README-Editor-skill` earned an unequivocal accept verdict: the repository is actively maintained, the issue has zero existing assignees or comments, the project has an AI-compatible contribution policy, and the deliverable is strictly bounded. The task requires writing a standard-library `scripts/check_all.py` script that replicates the repository's 10-step CI pipeline locally, alongside updating `CONTRIBUTING.md` and the PR template with fork-synchronization guidance.
+I searched across active GitHub repositories using a three-query search strategy focused on beginner-friendly Python and TypeScript newcomer opportunities. The initial scan surfaced 291 candidate issues, which the ranking pipeline narrowed down to 270 unassigned candidates active within the past 90 days before evaluating the top survivors against the five-check rubric. Issue #22 on `tanmayai23/README-Editor-skill` earned an unequivocal accept verdict: the repository is actively maintained, the issue has zero existing assignees or comments, the project has an AI-compatible contribution policy, and the deliverable is strictly bounded. The task requires writing a standard-library `scripts/check_all.py` script that replicates the repository's 16-step CI pipeline locally, alongside updating `CONTRIBUTING.md` and the PR template with fork-synchronization guidance.
 
 This issue matches my interest in developer tooling, continuous integration verification, and Python automation. Because first-time contributors currently face delayed CI execution pending maintainer approval, providing a single cross-platform command that reproduces CI locally solves an immediate contributor friction point. Working on this issue will help me build deeper proficiency with cross-platform standard library automation across Windows, macOS, and Linux, and practice drafting clear contributor documentation. In evaluating the issue-scout during this wild scan, I noticed that its zero-comment ranking heuristic clustered four issues from this single repository into the top five slots; while each issue passed rubric checks individually, adding a per-repository diversity cap will prevent single-repo dominance in future scans.
 
@@ -96,7 +76,7 @@ Guarded claim draft verified by `voice_guard.py`:
 
 **Problem Description**
 
-The `README-Editor-skill` repository runs approximately ten distinct validation checks across its GitHub Actions CI matrix (covering script compilation, 15 ecosystem unit tests, repository analyzers, README scoring, claim verification, SVG banner generation, and manifest parity across Python versions). However, `CONTRIBUTING.md` and the pull request template currently document only three of these commands. New contributors only discover the remaining checks when remote CI fails—and because first-time contributors require manual workflow approval from maintainers, feedback cycles are slow. Furthermore, several recent pull requests were branched from outdated forks rather than synced `main`, causing merge conflicts and near-reversions of recently landed features.
+The `README-Editor-skill` repository runs 16 distinct validation steps across its GitHub Actions CI workflow (`.github/workflows/ci.yml`), covering script compilation, 15 ecosystem unit tests, repository analyzers, README scoring, claim verification, SVG banner generation, and manifest parity across Python versions. However, `CONTRIBUTING.md` and the pull request template currently document only 4 of these commands (`unittest`, `py_compile`, `score_readme`, `verify_readme`). New contributors only discover the remaining checks when remote CI fails—and because first-time contributors require manual workflow approval from maintainers, feedback cycles are slow. Furthermore, several recent pull requests were branched from outdated forks rather than synced `main`, causing merge conflicts and near-reversions of recently landed features.
 
 **Expected Behavior**
 
@@ -116,7 +96,7 @@ Contributors must manually locate and run fragmented commands, several CI checks
 **Toolkit**
 
 - Tool: repo-memory (`CLAUDE.local.md`) and repository analysis
-- What it produced: Mapped the complete list of 10+ CI workflow steps in `ci.yml` against the 3 checks documented in `CONTRIBUTING.md`.
+- What it produced: Mapped the complete list of 16 CI workflow steps in `ci.yml` against the 4 checks documented in `CONTRIBUTING.md`.
 - Difficulties: Initial raw extraction exceeded line budgets by including raw bash snippets and matrix definitions.
 - What changed: Condensed the extraction into a high-level component map under 60 lines.
 
@@ -127,7 +107,7 @@ Contributors must manually locate and run fragmented commands, several CI checks
 **Environment Setup**
 
 - Operating System: macOS (Darwin 24.3.0 arm64)
-- Python Version: Python 3.15.2 (standard library only)
+- Python Version: Python 3.13.0 (standard library only)
 - Git Version: git version 2.39.5
 - Upstream Project: `tanmayai23/README-Editor-skill` cloned into local workspace
 - Setup Steps: Cloned the repository and inspected existing CI configurations in `.github/workflows/ci.yml`. Verified environment dependencies by confirming that all core scripts execute without external third-party pip packages.
@@ -141,9 +121,15 @@ Contributors must manually locate and run fragmented commands, several CI checks
 
 **Reproduction Evidence**
 
-- **Commit showing reproduction:** `6b5002d99945d011c5685f896ab15ee42ef670b6`
-- **Screenshots/logs:** `scripts/check_all.py` runs 16 validation steps and passes 112 unit tests across 15 ecosystems in 2.5s.
-- **My findings:** The repository had solid test coverage and clean zero-dependency design, but lacked local orchestration for its CI workflow and clear fork lifecycle instructions.
+- **Commit showing reproduction:** [tanmayai23/README-Editor-skill@main (Clean upstream checkout)](https://github.com/tanmayai23/README-Editor-skill/tree/main)
+- **Observed gap & logs:**
+  Running the proposed unified runner on a fresh checkout of upstream `main` reproduces the missing script:
+  ```text
+  $ python3 scripts/check_all.py
+  python3: can't open file '.../scripts/check_all.py': [Errno 2] No such file or directory
+  ```
+  Auditing `CONTRIBUTING.md` against `.github/workflows/ci.yml` confirms that 12 of the 16 checks executed in CI (including `analyze_repo.py`, `import_graph.py`, template scoring, and page kit diff checks) lack local documentation, leaving contributors reliant on remote CI feedback.
+- **My findings:** The repository has solid unit tests and a zero-dependency design, but completely lacks local orchestration for its 16 CI checks and provides no fork-sync guidance, causing avoidable CI turnaround delays for first-time contributors.
 
 **Toolkit**
 
